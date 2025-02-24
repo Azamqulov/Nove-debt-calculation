@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Nova_TV_Croatia_logo.png/480px-Nova_TV_Croatia_logo.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+      // Firebase konfiguratsiyasi
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import {
+        getAuth,
+        signInWithEmailAndPassword,
+        createUserWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyCbT7x1VXAkmnk_mMiI14T1mH3Gw05xx3w",
+        authDomain: "nove-b215b.firebaseapp.com",
+        projectId: "nove-b215b",
+        storageBucket: "nove-b215b.firebasestorage.app",
+        messagingSenderId: "1071767128657",
+        appId: "1:1071767128657:web:7d5d21b3bb425ff40cc670",
+        measurementId: "G-DVC07P6FFE",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      // Login funksiyasi
+      window.loginUser = function () {
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            window.location.href = "auth/admin.html";
+          })
+          .catch((error) => {
+            alert("Login xatosi: " + error.message);
+          });
+      };
+
+      // Ro‘yxatdan o‘tish funksiyasi
+      window.registerUser = function () {
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            alert("Foydalanuvchi yaratildi! Endi tizimga kiring.");
+          })
+          .catch((error) => {
+            alert("Ro‘yxatdan o‘tishda xatolik: " + error.message);
+          });
+      };
+    </script>
+  </head>
+  <body class="flex items-center justify-center h-screen bg-gray-900">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
+      <h2 class="text-2xl font-bold mb-4 text-gray-900">Login</h2>
+      <input
+        id="email"
+        type="email"
+        placeholder="Email"
+        class="w-full p-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <input
+        id="password"
+        type="password"
+        placeholder="Parol"
+        class="w-full p-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <button
+        onclick="loginUser()"
+        class="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600"
+      >
+        Kirish
+      </button>
+      <button
+        onclick="registerUser()"
+        class="w-full bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 mt-2"
+      >
+        Ro‘yxatdan o‘tish
+      </button>
+    </div>
+  </body>
+</html>

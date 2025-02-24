@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qarzdorlar Hisobi</title>
+    <!-- All css link -->
+    <link
+      rel="shortcut icon"
+      href="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Nova_TV_Croatia_logo.png/480px-Nova_TV_Croatia_logo.png"
+      type="image/x-icon"
+    />
+    <!-- favicon end  -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <!-- toastify css end -->
+  </head>
+  <body class="p-10 bg-gray-100 flex items-center justify-center">
+    <div
+      class="max-w-6xl w-full bg-white p-6 rounded shadow transition transform duration-300"
+    >
+      <!--  -->
+      <h2 class="text-xl font-bold mb-4 text-center">
+        Qarzdorlarni boshqarish
+      </h2>
+      <!--  -->
+      <div class="mb-4 felx-wrap">
+        <input id="ism" type="text" placeholder="Ism" class="border p-2 mr-2" />
+        <input
+          id="familiya"
+          type="text"
+          placeholder="Familiya"
+          class="border p-2 mr-2"
+        />
+        <!-- 1 -->
+        <input
+          id="telefon"
+          type="text"
+          placeholder="Telefon"
+          class="border p-2 mr-2"
+        />
+        <!-- 2 -->
+        <input
+          id="qarz"
+          type="number"
+          placeholder="Qarz summasi"
+          class="border p-2 mr-2"
+        />
+        <!-- 3 -->
+        <input id="sana" type="date" class="border p-2 mr-2" />
+        <!-- 4 -->
+        <button
+          onclick="addDebtor()"
+          class="bg-green-500 text-white px-4 py-2 rounded"
+        >
+          Qo'shish
+        </button>
+        <!-- send btn -->
+      </div>
+      <!-- data table -->
+      <table class="min-w-full bg-white mt-6 text-center">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="border px-4 py-2">Ism</th>
+            <th class="border px-4 py-2">Familiya</th>
+            <th class="border px-4 py-2">Telefon</th>
+            <th class="border px-4 py-2">Qarz</th>
+            <th class="border px-4 py-2">Sana</th>
+            <th class="border px-4 py-2">Amallar</th>
+          </tr>
+        </thead>
+        <tbody id="debtorsTable"></tbody>
+      </table>
+      <!-- data table end -->
+    </div>
+    <!-- modal  -->
+    <div
+      id="modal"
+      class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center"
+    >
+      <div class="bg-white p-6 rounded shadow-md w-1/3">
+        <h2 class="text-lg font-bold mb-4">Summani kiriting</h2>
+        <input id="modalAmount" type="number" class="border p-2 w-full mb-4" />
+        <div class="flex justify-end gap-2">
+          <button
+            onclick="closeModal()"
+            class="bg-gray-500 text-white px-4 py-2 rounded"
+          >
+            Bekor qilish
+          </button>
+          <button
+            onclick="confirmAction()"
+            class="bg-blue-500 text-white px-4 py-2 rounded"
+          >
+            Tasdiqlash
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- modal end -->
+  </body>
+  <!-- All script js  -->
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/toastify-js"
+  ></script>
+  <!-- toastify js end -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- tailwind end -->
+  <script type="module" src="../scripts/main.js"></script>
+</html>
